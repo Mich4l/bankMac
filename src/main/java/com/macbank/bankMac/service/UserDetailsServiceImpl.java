@@ -28,7 +28,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public ReadUserResponse readUserResponse(Long id) {
         Optional<UserEntity> userEntity = userRepo.findById(id);
 
-        if(userEntity.isPresent()) {
+        if (userEntity.isPresent()) {
             ReadUserResponse readUserResponse = new ReadUserResponse();
             readUserResponse.setId(id);
             readUserResponse.setUsername(userEntity.get().getUsername());

@@ -27,19 +27,20 @@ public class UserSecurity extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService);
+        auth.userDetailsService(userDetailsService).getUserDetailsService();
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
-        http.headers().disable();
+//        http.headers().disable();
         http.authorizeRequests()
-                .antMatchers("/konto")
+                .antMatchers("/konto/{id}")
                 .hasAnyRole("USER", "ADMIN")
                 .and()
                 .formLogin().defaultSuccessUrl("/konto/{id}");
     }
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {

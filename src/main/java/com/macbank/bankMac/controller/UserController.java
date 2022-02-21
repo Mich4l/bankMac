@@ -1,7 +1,6 @@
 package com.macbank.bankMac.controller;
 
 import com.macbank.bankMac.model.ReadUserResponse;
-import com.macbank.bankMac.repository.UserRepo;
 import com.macbank.bankMac.service.UserDetailsServiceImpl;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,8 +15,13 @@ public class UserController {
         this.userService = userService;
     }
 
+    @GetMapping("/konto")
+    public String hello() {
+        return "Hello";
+    }
+
     @GetMapping("/konto/{id}")
-    public ReadUserResponse getUserInfo(@PathVariable(name = "id")Long id){
+    public ReadUserResponse getUserInfo(@PathVariable(name = "id") Long id) {
         return userService.readUserResponse(id);
     }
 }

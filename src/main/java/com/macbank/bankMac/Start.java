@@ -5,13 +5,11 @@ import com.macbank.bankMac.repository.UserRepo;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+
 @Configuration
 public class Start {
 
-    private UserRepo userRepo;
-
     public Start(UserRepo userRepo, PasswordEncoder passwordEncoder) {
-        this.userRepo = userRepo;
 
         UserEntity userEntity = new UserEntity();
         userEntity.setUsername("michal");
@@ -27,4 +25,5 @@ public class Start {
         userEntity1.setRole("ROLE_ADMIN");
         userRepo.save(userEntity1);
     }
+
 }
