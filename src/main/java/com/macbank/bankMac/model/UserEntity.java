@@ -33,9 +33,10 @@ public class UserEntity implements UserDetails {
         this.userId = userId;
         this.username = username;
         this.balance = balance;
+
     }
 
-    public UserEntity(String username, String password, Double balance, String role) {
+    public UserEntity(Long userId, String username, String password, Double balance, String role) {
         this.userId = userId;
         this.username = username;
         this.password = password;

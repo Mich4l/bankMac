@@ -27,24 +27,20 @@ public class UserSecurity extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).getUserDetailsService();
+//        auth.userDetailsService(userDetailsService).getUserDetailsService();
+        auth.userDetailsService(userDetailsService);
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
-//        http.headers().disable();
+        http.headers().disable();
         http.authorizeRequests()
-                .antMatchers("/konto/{id}")
+                .anyRequest()
+ //               .antMatchers("/konto/**")
                 .hasAnyRole("USER", "ADMIN")
                 .and()
-                .formLogin().defaultSuccessUrl("/konto/{id}");
-    }
-
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+                .formLogin().defaultSuccessUrl("/konto");
     }
 }
 
