@@ -1,10 +1,12 @@
 package com.macbank.bankMac.model;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Collections;
 
 @Entity
 @Table(name = "users")
@@ -21,7 +23,24 @@ public class UserEntity implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return Collections.singleton(new SimpleGrantedAuthority(role));
+    }
+
+    public UserEntity() {
+    }
+
+    public UserEntity(Long id, String username, Double balance) {
+        this.id = id;
+        this.username = username;
+        this.balance = balance;
+    }
+
+    public UserEntity(String username, String password, Double balance, String role) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.balance = balance;
+        this.role = role;
     }
 
     public String getRole() {

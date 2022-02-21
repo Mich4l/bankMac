@@ -24,7 +24,7 @@ public class Start {
         userEntity1.setUsername("zbychu");
         userEntity1.setPassword(passwordEncoder.encode("zbychu123"));
         userEntity1.setBalance(4213.14);
-        userEntity1.setRole("ROLE_USER");
+        userEntity1.setRole("ROLE_ADMIN");
         userRepo.save(userEntity1);
     }
 }

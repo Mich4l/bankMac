@@ -35,9 +35,10 @@ public class UserSecurity extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.headers().disable();
         http.authorizeRequests()
-                .antMatchers("/konto").hasRole("USER")
+                .antMatchers("/konto")
+                .hasAnyRole("USER", "ADMIN")
                 .and()
-                .formLogin();
+                .formLogin().defaultSuccessUrl("/konto");
     }
 
     @Bean
