@@ -4,6 +4,8 @@ import com.macbank.bankMac.model.ReadUserResponse;
 import com.macbank.bankMac.service.UserDetailsServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,8 +31,8 @@ public class UserController {
     }
 
     @GetMapping(value = "/konta")
-    public ResponseEntity<ReadUserResponse> getUser(@RequestParam("id") Long id) throws Exception {
-
-        return new ResponseEntity<>(userService.readUserResponse(id), HttpStatus.OK);
+    public ResponseEntity<ReadUserResponse> getUser(@RequestParam(value = "id", required = false) Long id) throws Exception {
+        return new ResponseEntity(userService.readUserResponse(id), HttpStatus.OK);
+//        return new ResponseEntity(userService.readUserResponse(id), HttpStatus.OK);
     }
 }

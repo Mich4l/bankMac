@@ -7,6 +7,9 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -27,8 +30,7 @@ public class UserSecurity extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(userDetailsService).getUserDetailsService();
-        auth.userDetailsService(userDetailsService);
+        auth.userDetailsService(userDetailsService).getUserDetailsService();
     }
 
     @Override
@@ -40,7 +42,7 @@ public class UserSecurity extends WebSecurityConfigurerAdapter {
  //               .antMatchers("/konto/**")
                 .hasAnyRole("USER", "ADMIN")
                 .and()
-                .formLogin().defaultSuccessUrl("/konto");
+                .formLogin();
     }
 }
 
