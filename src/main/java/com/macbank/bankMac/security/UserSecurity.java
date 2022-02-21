@@ -38,7 +38,7 @@ public class UserSecurity extends WebSecurityConfigurerAdapter {
                 .antMatchers("/konto")
                 .hasAnyRole("USER", "ADMIN")
                 .and()
-                .formLogin().defaultSuccessUrl("/konto");
+                .formLogin().defaultSuccessUrl("/konto/{id}");
     }
 
     @Bean

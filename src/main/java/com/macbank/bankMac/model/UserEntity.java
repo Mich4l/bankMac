@@ -14,7 +14,7 @@ public class UserEntity implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long userId;
 
     private String username;
     private String password;
@@ -29,14 +29,14 @@ public class UserEntity implements UserDetails {
     public UserEntity() {
     }
 
-    public UserEntity(Long id, String username, Double balance) {
-        this.id = id;
+    public UserEntity(Long userId, String username, Double balance) {
+        this.userId = userId;
         this.username = username;
         this.balance = balance;
     }
 
     public UserEntity(String username, String password, Double balance, String role) {
-        this.id = id;
+        this.userId = userId;
         this.username = username;
         this.password = password;
         this.balance = balance;
@@ -51,12 +51,12 @@ public class UserEntity implements UserDetails {
         this.role = role;
     }
 
-    public Long getId() {
-        return id;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public void setUsername(String username) {
