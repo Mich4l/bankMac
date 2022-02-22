@@ -27,7 +27,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return userRepo.findByUsername(username);
     }
 
-//    public Mono<ReadUserResponse> readUserResponse(String id) {
+    public Mono<ReadUserResponse> readUserResponse(String id) {
 //        Mono<UserEntity> userEntity = userRepo.findById(id);
 //
 //
@@ -40,6 +40,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 //         else {
 //            throw new NoSuchElementException("Nie ma takiego Użytkownika");
 //        }
-//    }
+    return null;
+    }
 
 }
