@@ -2,13 +2,13 @@ package com.macbank.bankMac.model;
 
 public class ReadUserResponse {
 
-    private Long id;
+    private String id;
 
     private String username;
 
     private Double balance;
 
-    public ReadUserResponse(Long id, String username, Double balance) {
+    public ReadUserResponse(String id, String username, Double balance) {
         this.id = id;
         this.username = username;
         this.balance = balance;
@@ -17,11 +17,11 @@ public class ReadUserResponse {
     public ReadUserResponse() {
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

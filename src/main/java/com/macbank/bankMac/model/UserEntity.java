@@ -1,5 +1,6 @@
 package com.macbank.bankMac.model;
 
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,13 +9,13 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Collections;
 
-@Entity
+@Document
 @Table(name = "users")
 public class UserEntity implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+    private String userId;
 
     private String username;
     private String password;
@@ -29,14 +30,14 @@ public class UserEntity implements UserDetails {
     public UserEntity() {
     }
 
-    public UserEntity(Long userId, String username, Double balance) {
+    public UserEntity(String userId, String username, Double balance) {
         this.userId = userId;
         this.username = username;
         this.balance = balance;
 
     }
 
-    public UserEntity(Long userId, String username, String password, Double balance, String role) {
+    public UserEntity(String userId, String username, String password, Double balance, String role) {
         this.userId = userId;
         this.username = username;
         this.password = password;
@@ -52,11 +53,11 @@ public class UserEntity implements UserDetails {
         this.role = role;
     }
 
-    public Long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
